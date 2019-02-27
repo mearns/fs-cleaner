@@ -103,7 +103,23 @@ or underscores, but _may_ be any non-whitespace character. The command ids do no
 unique within a document, but any commands that share the same id will be executed when that
 command id is specified to be run.
 
-# License
+## Available Prepare Scripts
+
+### prepare-sandbox-clean.sh
+
+This prepare script scans specified directories looking for git repositories that can likely
+be cleaned (removed). Criteria for recommending cleaning are:
+
+* The directory has not be modified in the ast 90 days (cofigurable through the `-a` (age) option).
+* The repository has no uncommitted changes.
+* The repository has nothing stashed.
+* The repository has no untracked files (untracked files does not include anything ignored by the repo).
+* The repository has no unpushed commits on any branches.
+
+Note that for the last point, a branch that has no associated remote branch, or a repo that has no
+remotes specified, are considered to have unpushed commits (assuming they have any commits at all).
+
+## License
 
 Copyright 2019 Brian Mearns - Licensed under the MIT license (see the LICENSE file, or below,
 for details).
